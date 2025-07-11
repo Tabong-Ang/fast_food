@@ -1,0 +1,32 @@
+{% extends 'customer/base.html' %}
+
+{% block body %}
+<!-- Background Section with Bootstrap 5 -->
+<div class="container-fluid py-5" style="background: url('https://images.pexels.com/photos/2725744/pexels-photo-2725744.jpeg') center center / cover no-repeat;">
+  <div class="container mb-5 text-white">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-8 col-sm-12 offset-md-1 p-4 text-center">
+        <h1 style="text-shadow: 2px 2px 5px #000;" class="text-white">
+          Welcome to City Fast Food Online Delivery Service
+        </h1>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-1">
+      <div class="col-md-5 col-sm-12">
+        <div class="card shadow text-center p-4  text-white" style="
+  background-color: rgba(255, 193, 7, 0); /* semi-transparent warning yellow */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.187);
+">
+          <div class="card-body">
+            <h2 class="card-title" style="text-shadow: 2px 2px 5px #000;">Place an Order!</h2>
+            <a href="{% url 'order' %}" class="btn btn-outline-light shadow"><strong>Order Now!</strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

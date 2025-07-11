@@ -1,0 +1,45 @@
+{% extends 'restaurant/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 text-center mt-3">
+            <h1>Order ID: {{ order.pk }}</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-sm-12 mt-5">
+            <h3>Customer Information</h3>
+        </div>
+    </div>
+     <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 mt-5">
+            <p><span style="font-weight: 600;">Name: </span>{{ order.name }}</p>
+            <p><span style="font-weight: 600;">Phone No.: </span>{{ order.tel }}</p>
+            <p><span style="font-weight: 600;">Email: </span>{{ order.email }}</p>
+            <p><span style="font-weight: 600;">Location: </span>{{ order.street }}</p>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <h5>Payment and Delivery Information</h5>
+            <p class="mt-3">
+                {% if order.is_paid %}
+                <p><i style="color: #008000;" class="fa-solid fa-check"></i><span class="pl-2">Order has been paid</span></p>
+                {% else %}
+                <p><i style="color: #ff0000;" class="fa-solid fa-times"></i><span class="pl-2">Order has not been paid</span></p>
+                {% endif %}
+            </p>
+            {% if order.is_delivered %}
+                <p><i style="color: #008000;" class="fa-solid fa-check"></i><span class="pl-2">Order has been delivered</span></p>
+                {% else %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-success">Mark as delivered</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

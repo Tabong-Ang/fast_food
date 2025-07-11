@@ -1,0 +1,51 @@
+{% extends 'customer/base.html' %} {% block body %}
+
+<div class="container mb-5">
+  <div class="row justify-content-center mt-4">
+    <div
+      class="col-md-6 col-lg-5 col-sm-12 bg-white rounded shadow p-4 text-center"
+    >
+      <h1 class="fw-bold text-success mb-3">🎉 Order Submitted!</h1>
+      <p class="text-muted">You should receive a confirmation email soon.</p>
+      <a href="{% url 'index' %}" class="btn btn-outline-warning mt-3"
+        >Back to Homepage</a
+      >
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div
+      class="col-md-6 col-lg-5 col-sm-12 bg-light rounded shadow p-4 text-center"
+    >
+      <h3
+        class="fw-semibold mb-3 text-warning"
+        style="text-shadow: 2px 2px 2px #000000"
+      >
+        Order Summary:
+      </h3>
+      <div class="text-start">
+        {% for item in items.all %}
+        <p class="d-flex justify-content-between mb-1">
+          <span>{{ item.pk }}. {{item.name }}</span>
+          <span class="fw-bold">{{ item.price }}F</span>
+        </p>
+        {% endfor %}
+        <hr />
+        <p class="fw-bold text-end">
+          Total: <span class="text-success">{{ price }}F</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-7 text-center">
+      <h4 class="fw-semibold mb-3 text-dark">
+        Pay Now or Pay with Cash at Delivery
+      </h4>
+      <div class="mobile-money-qr-payment mb-5 btn btn-warning">Pay with MTN MOMO</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

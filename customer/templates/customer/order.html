@@ -1,0 +1,138 @@
+{% extends 'customer/base.html' %} {% block body %}
+<div class="container mb-5">
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-12 col-sm-12 p-4 bg-white rounded shadow">
+      <form method="POST">
+        {% csrf_token %}
+
+        <h4 class="fw-bold text-primary pt-2 pb-3">Appetizers</h4>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+          {% for app in appetizers %}
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <img src="{{ app.image.url }}" class="card-img-top" alt="{{ app.name }}">
+              <div class="card-body">
+                <div class="form-check">
+                  <input type="checkbox" name="items[]" id="item{{ app.pk }}" class="form-check-input" value="{{ app.pk }}">
+                  <label for="item{{ app.pk }}" class="form-check-label fw-bold">{{ app.name }}</label>
+                </div>
+                <p class="text-muted small mt-2">{{ app.description }}</p>
+              </div>
+              <div class="card-footer text-end">
+                <span class="fw-bold text-success">{{ app.price }}frs</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <h4 class="fw-bold text-primary pt-5 pb-3">Entres</h4>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+          {% for entre in entres %}
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <img src="{{ entre.image.url }}" class="card-img-top" alt="{{ entre.name }}">
+              <div class="card-body">
+                <div class="form-check">
+                  <input type="checkbox" name="items[]" id="item{{ entre.pk }}" class="form-check-input" value="{{ entre.pk }}">
+                  <label for="item{{ entre.pk }}" class="form-check-label fw-bold">{{ entre.name }}</label>
+                </div>
+                <p class="text-muted small mt-2">{{ entre.description }}</p>
+              </div>
+              <div class="card-footer text-end">
+                <span class="fw-bold text-success">{{ entre.price }}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <h4 class="fw-bold text-primary pt-5 pb-3">Desserts</h4>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+          {% for dessert in desserts %}
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <img src="{{ dessert.image.url }}" class="card-img-top" alt="{{ dessert.name }}">
+              <div class="card-body">
+                <div class="form-check">
+                  <input type="checkbox" name="items[]" id="item{{ dessert.pk }}" class="form-check-input" value="{{ dessert.pk }}">
+                  <label for="item{{ dessert.pk }}" class="form-check-label fw-bold">{{ dessert.name }}</label>
+                </div>
+                <p class="text-muted small mt-2">{{ dessert.description }}</p>
+              </div>
+              <div class="card-footer text-end">
+                <span class="fw-bold text-success">{{ dessert.price }}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <h4 class="fw-bold text-primary pt-5 pb-3">Drinks</h4>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+          {% for drink in drinks %}
+          <div class="col">
+            <div class="card h-10 0 shadow-sm">
+              <img src="{{ drink.image.url }}" class="card-img-top" alt="{{ drink.name }}">
+              <div class="card-body">
+                <div class="form-check">
+                  <input type="checkbox" name="items[]" id="item{{ drink.pk }}" class="form-check-input" value="{{ drink.pk }}">
+                  <label for="item{{ drink.pk }}" class="form-check-label fw-bold">{{ drink.name }}</label>
+                </div>
+                <p class="text-muted small mt-2">{{ drink.description }}</p>
+              </div>
+              <div class="card-footer text-end">
+                <span class="fw-bold text-success">{{ drink.price }}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="row pt-5 g-3">
+          <div class="col-md-6">
+            <label for="name" class="form-label">Full Name</label>
+            <input class="form-control" type="text" name="name" id="name" placeholder="Your Name" required />
+          </div>
+          <div class="col-md-6">
+            <label for="tel" class="form-label">Phone Number</label>
+            <input class="form-control" type="tel" name="tel" id="tel" required />
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email Address</label>
+            <input class="form-control" type="email" name="email" id="email" placeholder="example@gmail.com" />
+          </div>
+          <div class="col-md-6">
+            <label for="street" class="form-label">Location</label>
+            <input class="form-control" type="text" name="street" id="street" placeholder="Delivery Location" required />
+          </div>
+        </div>
+
+        <div class="text-center mt-4 mb-5">
+          <button type="button" class="btn btn-warning btn-lg fw-bold" data-bs-toggle="modal" data-bs-target="#submitModal">
+            Submit Order
+          </button>
+        </div>
+
+        <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="submitModalLabel">Submit Your Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Go Back</button>
+                <button type="submit" class="btn btn-warning">Place Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

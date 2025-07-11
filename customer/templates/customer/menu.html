@@ -1,0 +1,36 @@
+{% extends 'customer/base.html' %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 col-sm-12 text-center">
+            <h1>What's on our Menu?</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8 col-sm-12">
+            <form method="GET" action="{% url 'menu_search' %}">
+                <div class="form-floating">
+                    <input type="text" name="q" id="menuSearch" class="form-control border-warning text-dark mb-5" placeholder="Search our menu" value="{{ request.GET.q }}">
+                    <label for="menuSearch">Search our menu</label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+        {% for item in menu_items %}
+        <div class="col-md-4 col-sm-12 text-center mb-5">
+            <img src="{{ item.image.url }}" width="300" height="300" class="rounded">
+            <h5 class="mt-3">{{ item.name }}</h5>
+            <p>Price: {{ item.price }}</p>
+            <p>{{ item.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

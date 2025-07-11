@@ -1,0 +1,90 @@
+{% extends 'customer/base.html' %} {% block body %}
+<!-- Hero Section -->
+<section
+  style="
+    background-image: linear-gradient(rgba(0, 0, 0, 0.427), rgba(0, 0, 0, 0.358)),url('https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: 10%;
+    padding: 100px 0;
+  "
+  class="hero text-center"
+>
+  <div class="container">
+    <h1  class="display-2 text-warning" style="text-shadow: 2px 2px 5px #000;">Welcome to City Fast Food</h1>
+    <p class="lead text-white fw-bold">Where flavor meets speed, and every bite tells a story.</p>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2
+      style="font-size: 2rem; margin-bottom: 1rem"
+      class="section-title text-center"
+    >
+      Our Story
+    </h2>
+    <p class="text-center mb-4">
+      At
+      <span style="color: #e63946; font-weight: bold" class="highlight"
+        >City Fast Food</span
+      >, we believe great food should be fast, fresh, and full of flavor. Since
+      our founding, we've been on a mission to bring people together over
+      delicious meals that satisfy every craving.
+    </p>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <h5 class="fw-bold">🍔 Our Menu</h5>
+        <p>
+          From juicy hamburgers and crispy chicken to savory shawarma, pizza,
+          and fried rice — we serve comfort food with a twist.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="fw-bold">🍦 Sweet & Sips</h5>
+        <p>
+          Cool off with creamy ice cream, enjoy fizzy carbonated drinks, or
+          unwind with our selection of alcoholic and non-alcoholic beverages.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="fw-bold">⏰ Our Hours</h5>
+        <p>
+          Open Monday to Saturday: <strong>6am – 10pm</strong><br />Sunday:
+          <strong>12pm – 12am</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Why Choose Us?</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">✅ Fast, friendly service</li>
+          <li class="list-group-item">✅ Fresh ingredients, made daily</li>
+          <li class="list-group-item">
+            ✅ Affordable meals for every appetite
+          </li>
+          <li class="list-group-item">
+            ✅ Cozy, clean, and welcoming environment
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <img
+          src="https://images.pexels.com/photos/6416559/pexels-photo-6416559.jpeg"
+          class="img-fluid rounded"
+          alt="City Fast Food dishes"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
